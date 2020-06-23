@@ -90,6 +90,7 @@ if (__DEV__) {
 }
 
 function getReactRootElementInContainer(container: any) {
+  //判断container 是否有子节点 ,是否需要调和
   if (!container) {
     return null;
   }
@@ -117,7 +118,7 @@ function legacyCreateRootFromDOMContainer(
   const shouldHydrate =
     forceHydrate || shouldHydrateDueToLegacyHeuristic(container);
   // First clear any existing content.
-  if (!shouldHydrate) {
+  if (!shouldHydrate) {// 不是服务端渲染
     let warned = false;
     let rootSibling;
     while ((rootSibling = container.lastChild)) {
